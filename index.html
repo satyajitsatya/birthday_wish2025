@@ -491,7 +491,7 @@
             <h2 class="cute-font text-4xl text-pink-600 mb-8">Remember This?</h2>
             <div class="bg-white rounded-3xl p-8 shadow-2xl max-w-2xl" style="animation: fadeZoomIn 0.8s ease-out;">
                 <img src="images/7.jpg" alt="Special Memory" class="w-full h-96 object-cover rounded-xl mb-6">
-                <p class="text-xl text-gray-700 italic">[Description of a special memory - like "The day we laughed until we cried at the beach"]</p>
+                <p class="text-xl text-gray-700 italic">[ayi diwali tama sahita bahut special thila tama khusi🥰😍😘🥰 nhi mo pae sabu ki6i bhagaban tamaku sabu bele ayi bhali khusire rakhantu. "]</p>
             </div>
             <button class="next-btn mt-12" onclick="nextPage()">Next Surprise 💖</button>
         </div>
@@ -619,16 +619,35 @@
     </div>
     
     <!-- Page 14: Video Reels -->
-    <div class="page-section" id="page14" data-page="14">
-        <div class="flex flex-col items-center justify-center w-full p-8 text-center">
-            <h2 class="cute-font text-4xl text-pink-600 mb-8">A Few of Our Favorite Moments, In Motion</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-6xl" id="videoGrid">
-                <!-- Video cards will be added by JS -->
-            </div>
-            <button class="next-btn" onclick="nextPage()">Final Surprise 💫</button>
+<!-- Page 14: Video Reels -->
+<div class="page-section" id="page14" data-page="14">
+    <div class="flex flex-col items-center justify-center w-full h-screen p-4">
+        <!-- Message Section - 20% height -->
+        <div class="w-full text-center mb-4" style="height: 20%;">
+            <h2 class="cute-font text-3xl md:text-4xl text-pink-600 mb-2">A Few of Our Favorite Moments, In Motion</h2>
+            <p class="text-gray-600 text-sm md:text-base">Tap to unmute 🔊</p>
         </div>
+        
+        <!-- Video Section - 80% height -->
+        <div class="w-full flex justify-center items-center" style="height: 80%;">
+            <div class="w-full h-full max-w-4xl">
+                <video id="mainVideo" class="w-full h-full object-cover rounded-2xl shadow-2xl" 
+                       playsinline 
+                       autoplay 
+                       muted 
+                       controls 
+                       preload="auto">
+                    <source src="images/video5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        
+        <!-- Next Button -->
+        <button class="next-btn mt-4" onclick="nextPage()">Final Surprise 💫</button>
     </div>
-    
+</div>
+
     <!-- Page 15: Final Message -->
     <div class="page-section" id="page15" data-page="15">
         <div class="flex flex-col items-center justify-center w-full p-8 text-center relative">
@@ -1004,47 +1023,111 @@
         }
         
         // Page 14: Video Grid
-        function createVideoGrid() {
-            const container = document.getElementById('videoGrid');
-            container.innerHTML = '';
+        // function createVideoGrid() {
+        //     const container = document.getElementById('videoGrid');
+        //     container.innerHTML = '';
             
-            for (let i = 1; i <= 5; i++) {
-                const card = document.createElement('div');
-                card.className = 'flip-card bg-gradient-to-br from-pink-200 to-red-300 rounded-2xl shadow-xl h-64';
-                card.innerHTML = `
-                    <div class="flip-card-inner w-full h-full">
-                        <div class="flip-card-front flex items-center justify-center rounded-2xl bg-gradient-to-br from-pink-300 to-red-400">
-                            <svg class="w-16 h-16" fill="white" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </div>
-                        <div class="flip-card-back rounded-2xl overflow-hidden">
-                            <video class="w-full h-full object-cover" controls>
-                                <source src="images/video${i}.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
+        //     for (let i = 1; i <= 5; i++) {
+        //         const card = document.createElement('div');
+        //         card.className = 'flip-card bg-gradient-to-br from-pink-200 to-red-300 rounded-2xl shadow-xl h-64';
+        //         card.innerHTML = `
+        //             <div class="flip-card-inner w-full h-full">
+        //                 <div class="flip-card-front flex items-center justify-center rounded-2xl bg-gradient-to-br from-pink-300 to-red-400">
+        //                     <svg class="w-16 h-16" fill="white" viewBox="0 0 24 24">
+        //                         <path d="M8 5v14l11-7z"/>
+        //                     </svg>
+        //                 </div>
+        //                 <div class="flip-card-back rounded-2xl overflow-hidden">
+        //                     <video class="w-full h-full object-cover" controls>
+        //                         <source src="images/video${i}.mp4" type="video/mp4">
+        //                     </video>
+        //                 </div>
+        //             </div>
+        //         `;
+        //         container.appendChild(card);
                 
-                // Flip cards one by one
-                setTimeout(() => {
-                    card.classList.add('flipped');
-                }, i * 500);
+        //         // Flip cards one by one
+        //         setTimeout(() => {
+        //             card.classList.add('flipped');
+        //         }, i * 500);
                 
-                // Handle video play/pause with music
-                const video = card.querySelector('video');
-                video.addEventListener('play', () => {
-                    music.pause();
-                });
-                video.addEventListener('pause', () => {
-                    if (musicStarted && !isMuted) music.play();
-                });
-                video.addEventListener('ended', () => {
-                    if (musicStarted && !isMuted) music.play();
-                });
-            }
+        //         // Handle video play/pause with music
+        //         const video = card.querySelector('video');
+        //         video.addEventListener('play', () => {
+        //             music.pause();
+        //         });
+        //         video.addEventListener('pause', () => {
+        //             if (musicStarted && !isMuted) music.play();
+        //         });
+        //         video.addEventListener('ended', () => {
+        //             if (musicStarted && !isMuted) music.play();
+        //         });
+        //     }
+        // }
+
+        // Page 14: Video Display - SIMPLE VERSION WITH ONLY VIDEO5
+// Page 14: Video Display with Autoplay
+function createVideoGrid() {
+    const video = document.getElementById('mainVideo');
+    
+    if (!video) return;
+    
+    // Attempt autoplay with sound first
+    attemptAutoplay(video);
+    
+    // When video plays, pause background music
+    video.addEventListener('play', () => {
+        if (musicStarted) {
+            music.pause();
         }
+    });
+    
+    // When video pauses, resume background music
+    video.addEventListener('pause', () => {
+        if (musicStarted && !isMuted) {
+            music.play();
+        }
+    });
+    
+    // When video ends, resume background music
+    video.addEventListener('ended', () => {
+        if (musicStarted && !isMuted) {
+            music.play();
+        }
+    });
+    
+    // Allow user to unmute with a tap/click
+    video.addEventListener('click', () => {
+        if (video.muted) {
+            video.muted = false;
+            video.volume = 1.0;
+        }
+    });
+}
+
+// Function to attempt autoplay
+function attemptAutoplay(video) {
+    // First try to play with sound
+    video.muted = false;
+    var playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            // Autoplay with sound worked!
+            if (musicStarted) {
+                music.pause();
+            }
+        }).catch(() => {
+            // Autoplay with sound failed, try muted
+            video.muted = true;
+            video.play().catch(err => {
+                console.log('Autoplay failed:', err);
+            });
+        });
+    }
+}
+
+
         
         // Page 15: Final Hearts
         function createFinalHearts() {
